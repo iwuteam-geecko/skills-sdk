@@ -32,19 +32,30 @@ trait SkillableTrait
 в `$params` можно передавать любые параметры для создания ссессии:
 
 ```php
- $params = [
-    'template_id' => 7, //использовать или template_id или  tasks
-    'tasks' => [
-            ['type'=>1, 'id'=>98]
-        ],
-    'without_feedback' => 1, //1 или 0,   
-    'autostart' => 1, //1 или 0,   
-    'redirect_uri' => 'урл для редиректа',
-    'pass_by_tests' => 1, //1 или 0,  
-    //возможно будет что-то еще
- ];
+use Geecko\Skills\Models\LanguageTask;
 
- $sessionable->newSession($params)->create();
+$user = User::find(1);
+$langTaskModel = LanguageTask::where('language_id', $user->language_id)->first();
+
+$params = [
+    'template_id' => 7, //использовать или template_id или tasks
+    'tasks' => [
+        [
+            'id' => $langTaskModel->skillservice_id,
+            'type' => $langTaskModel->type,
+        ]
+    ],
+    'without_feedback' => 1, //1 или 0,
+    'autostart' => 1, //1 или 0,
+    'redirect_uri' => 'урл для редиректа',
+    'pass_by_tests' => 1, //1 или 0,
+    //возможно будет что-то еще
+];
+
+$user->newSession($params)
+     ->create();
+     
+return redirect($session->url);
 ```
 
  либо же
@@ -53,13 +64,19 @@ trait SkillableTrait
 autostart()`
 
 ```php
-$sessionable->newSession()
-    ->addTask($langTaskModel)//можно добавлять неоднократно
-    ->autostart()
-    ->redirect($someUrl)
-    ->skipFeedback()
-    ->passByTest()
-    ->create();
+use Geecko\Skills\Models\LanguageTask;
+
+$user = User::find(1);
+$langTaskModel = LanguageTask::where('language_id', $user->language_id)->first();
+$session = $user->newSession()
+                ->addTask($langTaskModel)
+                ->autostart()
+                ->redirect(route('skills-test-complete'))
+                ->skipFeedback()
+                ->passByTest()
+                ->create();
+
+return redirect($session->url);
 ```
 
 Последний вызванный метод из `SetTemplate() и addTask()` определяет, какая будет создана сессия:
