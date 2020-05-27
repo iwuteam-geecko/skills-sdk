@@ -23,7 +23,7 @@ class CreateSkillserviceSessions extends Migration
             $table->json('tasks')->nullable();
             $table->json('feedback')->nullable();
             $table->json('template')->nullable();
-            $table->integer('score')->nullable();
+            $table->json('score')->nullable();
             $table->integer('score_percent')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('started_at')->nullable();

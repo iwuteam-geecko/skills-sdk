@@ -45,10 +45,10 @@ class SkillsQueryBuilder
         $this->sessionable = $sessionable;
         if (count($params)) {
             $this->params = $params;
-            if(isset($this->params['template_id'])){
+            if (isset($this->params['template_id'])) {
                 $this->path = '/api/v1/sessions/from-template';
             }
-            if(isset($this->params['tasks'])){
+            if (isset($this->params['tasks'])) {
                 $this->path = '/api/v1/sessions/from-tasks';
             }
         }
@@ -68,7 +68,7 @@ class SkillsQueryBuilder
      * @param bool $val
      * @return $this
      */
-    public function skipFeedback(bool $val)
+    public function skipFeedback(bool $val = true)
     {
         $this->params['without_feedback'] = $val ? 1 : 0;
         return $this;
@@ -78,7 +78,7 @@ class SkillsQueryBuilder
      * @param bool $val
      * @return $this
      */
-    public function autostart(bool $val)
+    public function autostart(bool $val = true)
     {
         $this->params['autostart'] = $val ? 1 : 0;
         return $this;
@@ -88,7 +88,7 @@ class SkillsQueryBuilder
      * @param bool $val
      * @return $this
      */
-    public function passByTests(bool $val)
+    public function passByTests(bool $val = true)
     {
         $this->params['pass_by_tests'] = $val ? 1 : 0;
         return $this;
