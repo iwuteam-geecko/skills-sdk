@@ -25,7 +25,6 @@ class SkillsQueryBuilder
      * @var array
      */
     protected $params = [
-        'template_id' => null,
         'tasks' => [],
         'candidate' => []
     ];
@@ -46,6 +45,12 @@ class SkillsQueryBuilder
         $this->sessionable = $sessionable;
         if (count($params)) {
             $this->params = $params;
+            if(isset($this->params['template_id'])){
+                $this->path = '/api/v1/sessions/from-template';
+            }
+            if(isset($this->params['tasks'])){
+                $this->path = '/api/v1/sessions/from-tasks';
+            }
         }
     }
 

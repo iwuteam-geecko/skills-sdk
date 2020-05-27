@@ -16,17 +16,6 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  */
 trait SkillableTrait
 {
-
-    /**
-     * SkillableTrait constructor.
-     * @param array $attributes
-     */
-    public function __construct($attributes = [])
-    {
-        parent::__construct($attributes);
-
-    }
-
     /**
      * Set the polymorphic relation.
      *
