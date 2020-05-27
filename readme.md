@@ -1,4 +1,4 @@
-# Skills SDK
+# Skills Laravel SDK
 Пакет для интеграции с сервисом Skills
 
 ## Установка
