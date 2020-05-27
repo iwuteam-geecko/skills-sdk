@@ -3,7 +3,7 @@
 
 ## Установка
 
-```bash
+```pip
 composer require iwuteam-geecko/skills-sdk
 pip artisan migrate
 php artisan vendor:publish --provider=Geecko\Skills\SkillsServiceProvider --tag=config
@@ -83,7 +83,7 @@ public function toModelSessionableView()
 }
 ```
 
-##Webhook routes
+## Webhook routes
 
 ```
 skills-service/webhooks/session-started - сессия запущена
@@ -93,7 +93,7 @@ skills-service/webhooks/results-received - получены результаты
 skills-service/webhooks/feedback-received - получен фидбэк
 ```
 
-##Events
+## Events
 При вызове вэбхука из Skills соответствующий экшен запускает событие и сохраняет пришедшие данные в сессию
 ```
 SessionStarted::class
