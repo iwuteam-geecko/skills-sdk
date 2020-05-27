@@ -53,10 +53,16 @@ trait SkillableTrait
 autostart()`
 
 ```php
-$sessionable->newSession()->addTask($langTaskModel)->autostart()->redirect($someUrl)->skipFeedback()->passByTest()->create();
+$sessionable->newSession()
+    ->addTask($langTaskModel)//можно добавлять неоднократно
+    ->autostart()
+    ->redirect($someUrl)
+    ->skipFeedback()
+    ->passByTest()
+    ->create();
 ```
 
-Последний вызванный метод из `SetTemplate() и addTask()` определяет какая будет создана сессия:
+Последний вызванный метод из `SetTemplate() и addTask()` определяет, какая будет создана сессия:
 из шаблона или из массива заданий
 
 Так как заданий при создании сессии можно добавить более 1, то допускается множественный вызов `addTask()`
