@@ -1,5 +1,5 @@
 # Skills SDK
-Пакет для интеграция с сервисом Skills
+Пакет для интеграции с сервисом Skills
 
 ## Установка
 
@@ -65,7 +65,7 @@ $sessionable->newSession()->addTask($langTaskModel)->autostart()->redirect($some
 
 Для непосредственного запроса и сохранения сессии в конце нужно вызвать `create()`
 
-`skillsSessions()` - нименование полиморфной связи у Sessionable
+`skillsSessions()` - наименование полиморфной связи у Sessionable
 
 `getSkillsLastSession()` - получение последней сессии у Sessionable
 
